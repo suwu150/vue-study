@@ -7,7 +7,7 @@
 
 <script>
     export default {
-        inheritAttrs: false,
+        inheritAttrs: false, // 不继承$attrs属性到跟节点
         props: {
             value: {
                 type: String,
@@ -29,5 +29,10 @@
         },
     }
 </script>
+<style scoped>
 
-<style lang="scss" scoped></style>
+  input:focus{
+      border: 1px solid #555;
+      outline: transparent
+  }
+</style>

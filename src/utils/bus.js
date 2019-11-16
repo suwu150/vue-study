@@ -1,9 +1,7 @@
+
+// Bus:事件派发、监听和回调管理
 export default class Bus {
   constructor() {
-    // {
-    //   eventName1:[fn1,fn2],
-    //   eventName2:[fn3,fn4],
-    // }
     this.callbacks = {};
   }
   $on(name, fn) {

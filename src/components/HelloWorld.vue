@@ -30,13 +30,13 @@ export default {
   created() {
     // 监听事件
     this.$parent.$on('hiBrother', () => {
-      console.log('来自兄弟的问候');
-      
+      // console.log('来自兄弟的问候');
+
     })
   },
   methods: {
     sayHello() {
-      this.$parent.$emit('hiBrother')
+      this.$parent.$emit('hiBrother');
 
       this.$root.bar = 'barrrrrr'
     }

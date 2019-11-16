@@ -1,14 +1,11 @@
 <template>
-    
+
     <div>
         <h2>Grandson2</h2>
-        <p>
-            祖先元素提供的数据 : {{woniu}}
-        </p>
+        <p>祖先元素提供的数据 : {{woniu}}</p>
         <button @click="eventBus">$bus发布</button>
         <h3>{{msg}}</h3>
-        <grand-grand-child1>
-        </grand-grand-child1>
+        <grand-grand-child1></grand-grand-child1>
     </div>
 </template>
 <script>

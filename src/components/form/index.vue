@@ -36,7 +36,7 @@ export default {
     KInput,
     KFormItem,
     KForm,
-    Notice
+    // Notice
   },
   methods: {
     onLogin() {
