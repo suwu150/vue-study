@@ -1,5 +1,5 @@
 <template>
-    <option :name="name" :value="value" v-bind="$attrs">{{ name }}</option>
+    <option name="name" :value="value">{{ name }}</option>
 </template>>
 
 <script>

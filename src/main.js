@@ -7,7 +7,7 @@ import create from './utils/create';
 
 
 Vue.config.productionTip = false;
-Vue.mixin(emitter);
+Vue.mixin(emitter);  // 全局混入
 // main.js
 // 事件总线方式，挂载到Vue中
 Vue.prototype.$bus = new Bus();

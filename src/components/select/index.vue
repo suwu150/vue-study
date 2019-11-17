@@ -1,11 +1,8 @@
 <template>
     <div>
-        <select @change="onChange" :value="value" v-bind="$attrs">
-            <option value="">请选择</option>
+        <select @input="onInput" :value="value">
             <slot></slot>
         </select>
-       value: {{this.value}}
-        {{$attrs}}
     </div>
 </template>
 
@@ -20,14 +17,15 @@ export default {
         }
     },
     methods: {
-        onChange(e) {
+        onInput(e) {
                 // 转发change事件即可
-                this.$emit('change', e.target.value);
-                console.log('change', e.target.value);
-                this.value = e.target.value;
+                // this.$emit('change', e.target.value);
+                // console.log('change', e.target.value);
+
+                this.$emit('input', e.target.value);
                 // 通知校验
                 // this.$parent.$emit('validate')
-                this.KFormItem.$emit('validate')
+                this.KFormItem.$emit('validate');
         }
     }
 }

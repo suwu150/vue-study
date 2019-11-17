@@ -55,8 +55,8 @@
           // 将错误信息显示
           this.error = errors[0].message;
          } else {
-        // 校验通过
-        this.error = "";
+          // 校验通过
+          this.error = "";
          }
       });
       }

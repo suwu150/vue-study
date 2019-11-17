@@ -9,9 +9,19 @@
       </k-form-item>
       <k-form-item label="性别:" prop="gender">
         <k-select v-model="model.gender">
+          <k-option name="请选择" value=""></k-option>
           <k-option name='男' value="male"></k-option>
           <k-option name='女' value="female"></k-option>
         </k-select>
+      </k-form-item>
+      <k-form-item label="备注信息:" prop="remark">
+        <k-textarea v-model="model.remark" placeholder="请输入备注信息..."></k-textarea>
+      </k-form-item>
+      <k-form-item label="爱好:" prop="hobby">
+        <k-input v-model="model.hobby" type="checkbox" name="打篮球" value="basket" placeholder="请选择爱好..."></k-input>
+        <k-input v-model="model.hobby" type="checkbox" name="踢足球" value="football" placeholder="请选择爱好..."></k-input>
+        <k-input v-model="model.hobby" type="checkbox" name="跑步" value="runner" placeholder="请选择爱好..."></k-input>
+        <k-input v-model="model.hobby" type="checkbox" name="打羽毛球" value="playCh" placeholder="请选择爱好..."></k-input>
       </k-form-item>
       <k-form-item>
         <button @click="onLogin">提交</button>
@@ -28,6 +38,7 @@ import KForm from "@/components/formMy/KForm.vue";
 import Notice from "@/components/Notice.vue";
 import KSelect from "@/components/select/index.vue";
 import KOption from "@/components/select/option.vue";
+import KTextarea from "@/components/textArea/index.vue";
 
 export default {
   data() {
@@ -36,7 +47,8 @@ export default {
       rules: {
         username: [{ required: true, message: "必填项" }],
         password: [{ required: true, message: "必填项" }],
-        gender: [{ required: true, message: "必填项" }]
+        gender: [{ required: true, message: "必填项" }],
+        remark: [{ required: false, message: "必填项" }],
       }
     };
   },
@@ -45,7 +57,8 @@ export default {
     KFormItem,
     KForm,
     KSelect,
-    KOption
+    KOption,
+    KTextarea,
   },
   methods: {
     onLogin() {
