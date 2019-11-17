@@ -3,6 +3,7 @@ import App from "./App.vue";
 import emitter from "./mixins/emitter";
 import Bus from './utils/bus';
 import create from './utils/create';
+import router from './router'
 // import 'icons/index';
 
 
@@ -17,6 +18,9 @@ new Vue({
   data: {
     bar: 'bar'
   },
+
+  router,
+
   // router,
-  render: h => h(App),
+  render: h => h(App)
 }).$mount("#app");
