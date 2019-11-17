@@ -27,17 +27,18 @@
       created() {
         // 监听事件
         this.$parent.$on('hiBrother', () => {
-          console.log('来自兄弟的问候', 'HelloWorld');
+          console.log('来自兄弟的问候', 'HelloWorld'); // eslint-disable-line
         });
       },
       mounted(){
+        this.mixinslog('HelloWorld Vue is Mounted!');
         setTimeout(() => {
           // 派发事件,在HelloWorldEmit.vue组件中监听
           this.$bus.$emit('fromHelloWorld', '传递给HelloWorldEmit.vue的数据');
         }, 5000);
       },
       methods: {
-        sayHello(e) {
+        sayHello() {
           this.$parent.$emit('hiBrother');
         }
       }

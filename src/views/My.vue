@@ -11,16 +11,11 @@ import HelloWorld from './HelloWorld.vue'
 
 export default {
   name: 'home',
-  provide() {
-      return {
-          provideFoo: 'fooooo'
-      }
-  },
   components: {
     HelloWorld
   },
   mounted() {
-      this.mixinslog('Home Vue is Mounted!');
+      this.mixinslog('My Vue is Mounted!');
   }
 }
 </script>
