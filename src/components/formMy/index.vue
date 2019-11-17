@@ -7,6 +7,12 @@
       <k-form-item label="密码:" prop="password">
         <k-input v-model="model.password" type="password" placeholder="请输入密码..."></k-input>
       </k-form-item>
+      <k-form-item label="性别:" prop="gender">
+        <k-select v-model="model.gender">
+          <k-option name='男' value="male"></k-option>
+          <k-option name='女' value="female"></k-option>
+        </k-select>
+      </k-form-item>
       <k-form-item>
         <button @click="onLogin">提交</button>
       </k-form-item>
@@ -19,34 +25,34 @@
 import KInput from "@/components/formMy/KInput.vue";
 import KFormItem from "@/components/formMy/KFormItem.vue";
 import KForm from "@/components/formMy/KForm.vue";
+import Notice from "@/components/Notice.vue";
+import KSelect from "@/components/select/index.vue";
+import KOption from "@/components/select/option.vue";
 
 export default {
   data() {
     return {
-      model: { username: "tom", password: "" },
+      model: { username: "tom", password: "", gender: 'female' },
       rules: {
         username: [{ required: true, message: "必填项" }],
-        password: [{ required: true, message: "必填项" }]
+        password: [{ required: true, message: "必填项" }],
+        gender: [{ required: true, message: "必填项" }]
       }
     };
   },
   components: {
     KInput,
     KFormItem,
-    KForm
+    KForm,
+    KSelect,
+    KOption
   },
   methods: {
     onLogin() {
-      this.$refs['loginForm'].validate((isValid) => {
-        // if (isValid) {
-        //   alert('请求登陆');
-        // } else {
-        //   alert('校验失败，请检查...');
-        // }
-
+      this.$refs["loginForm"].validate(isValid => {
         this.$create(Notice, {
-          title: '登陆校验',
-          message: isValid ? '校验成功' : '校验失败',
+          title: "登陆校验",
+          message: isValid ? "校验成功" : "校验失败",
           duration: 2000
         }).show();
       });

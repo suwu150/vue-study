@@ -15,6 +15,11 @@
 
   export default {
     inject: ['form'],
+    provide() {
+      return {
+        KFormItem: this
+      }
+    },
     props: {
       label: {
         type: String,

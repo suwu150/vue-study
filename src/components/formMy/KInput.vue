@@ -8,6 +8,7 @@
 <script>
     export default {
         inheritAttrs: false, // 不继承$attrs属性到跟节点
+        inject: ['KFormItem'],
         props: {
             value: {
                 type: String,
@@ -24,7 +25,8 @@
                 this.$emit('input', e.target.value);
 
                 // 通知校验
-                this.$parent.$emit('validate')
+                // this.$parent.$emit('validate')
+                this.KFormItem.$emit('validate')
             }
         },
     }

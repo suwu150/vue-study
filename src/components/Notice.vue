@@ -48,7 +48,8 @@ export default {
   text-align: center;
   pointer-events: none;
   background-color: #fff;
-  border: grey 3px solid;
+  border: grey 1px solid;
+  border-radius: 5px;
   box-sizing: border-box;
 }
 .box-content {
