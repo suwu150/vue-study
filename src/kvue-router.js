@@ -47,13 +47,17 @@ class KVueRouter {
         });
 
         Vue.component('router-view', {
-            render: (h) => {
-                const componentRouter = this.routeMap[this.app.current].component;
+            // render: (h) => {
+            //     const componentRouter = this.routeMap[this.app.current].component;
+            //     return h(componentRouter);
+            // }
+            render(h) {
+                const componentRouter = this.$router.routeMap[this.$router.app.current].component;
                 return h(componentRouter);
             }
         });
     }
-} 
+}
 
 
 KVueRouter.install = function (_Vue) {
@@ -67,7 +71,7 @@ KVueRouter.install = function (_Vue) {
                 // 路由器初始化
                 this.$options.router.init();
             }
-           
+
         }
     });
 };
