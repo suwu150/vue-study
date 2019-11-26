@@ -12,36 +12,55 @@
           <p>{{name}}</p>
           <p k-text="name"></p>
           <p>{{age}}</p>
-          <p>
-            {{doubleAge}}
-          </p>
+          <p>{{doubleAge}}</p>
           <input type="text" k-model="name">
           <button @click="changeName">呵呵</button>
           <div k-html="html"></div>
         </div>
 
-
+        <script src='./kLog.js'></script>
         <script src='./compiler.js'></script>
         <script src='./kvue.js'></script>
 
         <script>
+
+          const log = new KLog();
           const kaikeba = new KVue({
             el:'#app',
+            // data数据设置
             data: {
               name: "I am test.",
               age:12,
-              html:'<button>这是一个按钮</button>'
+              doubleAge: 'doubleAgerrrrr',
+              html:'<button @click="showModal">这是一个按钮</button>'
+            },
+            // 生命周期实现
+            beforeCreate() {
+              log.info('beforeCreate生命周期执行', this);
             },
             created(){
-              console.log('开始啦');
+              log.info('created生命周期执行', this);
               setTimeout(()=>{
                 this.name='我是测试'
               }, 1500)
             },
+            beforeMount() {
+              log.info('beforeMount生命周期执行', this);
+            },
+            mounted() {
+              log.info('mounted生命周期执行', this);
+            },
+
+            // 方法实现
             methods:{
-              changeName(){
-                this.name = '哈喽，开课吧';
+              changeName(e){
+                console.log(e);
+                this.name = '哈喽，开课吧.........';
                 this.age = 1
+              },
+              showModal() {
+                console.log(this);
+                alert('弹窗......' + this.name + '--' + this.age);
               }
             }
           })

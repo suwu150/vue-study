@@ -7,18 +7,21 @@ class KVue {
     // 处理传入data
     this.$data = options.data;
 
+    // 执行一下钩子函数beforeCreate
+    // 在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。
+    if (options.beforeCreate) {
+      options.beforeCreate.call(this);
+    }
     // 数据响应化，进行劫持数据
     this.observe(this.$data);
-
+    // 执行一下钩子函数
+    if (options.created) {
+      options.created.call(this);
+    }
     // 2.依赖收集
     // new Watcher(this, 'test');
     // this.test;
     new Compiler(options.el, this);
-
-    // 执行一下钩子函数
-    if (options.created) {
-        options.created.call(this);
-    }
   }
 
   observe(value) {
@@ -35,7 +38,6 @@ class KVue {
       // 代理data中的属性到vue实例上
       this.proxyData(key);
     });
-
   }
 
   defineReactive(obj, key, val) {
@@ -105,7 +107,7 @@ class Watcher {
     }
 
     update() {
-        // console.log(`${this.key}属性更新了`);
+        console.log(`${this.key}属性更新了`);
         this.cb.call(this.vm, this.vm[this.key])
 
     }
